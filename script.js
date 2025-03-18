@@ -57,9 +57,13 @@ frame.addEventListener('wheel', (e) => {
             scale = scaleMin;
         }
         let scaleDelta = scale - scaleTemp;
-        // Fixed transposed cursor position
-        offset.x += ((offset.x - cursor.x) * scaleDelta / 100 + container.offsetWidth * scaleDelta / 100 / 2);
-        offset.y += ((offset.y - cursor.y) * scaleDelta / 100 + container.offsetHeight * scaleDelta / 100 / 2);
+        // offset.x -= transposedCursor.x * scaleDelta / 100;
+        offset.x -= (cursor.x-offset.x-container.offsetWidth*(100-scale)/100/2)*100/scale * scaleDelta / 100;
+        offset.x += (container.offsetWidth / 2) * scaleDelta / 100;
+
+        // offset.y -= transposedCursor.y * scaleDelta / 100;
+        offset.y -= (cursor.y-offset.y-container.offsetHeight*(100-scale)/100/2)*100/scale * scaleDelta / 100;
+        offset.y += (container.offsetHeight / 2) * scaleDelta / 100;
         render();
     } else {
         offset.x -= e.deltaX;
