@@ -58,11 +58,11 @@ frame.addEventListener('wheel', (e) => {
         }
         let scaleDelta = scale - scaleTemp;
         // offset.x -= transposedCursor.x * scaleDelta / 100;
-        offset.x -= (cursor.x-offset.x-container.offsetWidth*(100-scale)/100/2)*100/scale * scaleDelta / 100; // Wrong
+        offset.x -= (cursor.x-offset.x-container.offsetWidth*(100-scaleTemp)/100/2)*100/scaleTemp * scaleDelta / 100;
         offset.x += (container.offsetWidth / 2) * scaleDelta / 100;
 
         // offset.y -= transposedCursor.y * scaleDelta / 100;
-        offset.y -= (cursor.y-offset.y-container.offsetHeight*(100-scale)/100/2)*100/scale * scaleDelta / 100; // Wrong
+        offset.y -= (cursor.y-offset.y-container.offsetHeight*(100-scaleTemp)/100/2)*100/scaleTemp * scaleDelta / 100;
         offset.y += (container.offsetHeight / 2) * scaleDelta / 100;
         render();
     } else {
